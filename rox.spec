@@ -22,7 +22,7 @@ Requires:	glib2 >= 2.0.3
 Requires:	gtk+2 >= 2.0.1
 Requires:	libxml2 >= 2.0.0
 Requires:	shared-mime-info >= 0.8
-Conflicts: rox-base
+Conflicts:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appsdir	%{_libdir}/ROX-apps
