@@ -12,6 +12,7 @@ Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
+Patch2:		%{name}-gtk222.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	gdk-pixbuf-devel
@@ -40,6 +41,7 @@ uniksowych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p0
 
 %build
 cd ROX-Filer/src
