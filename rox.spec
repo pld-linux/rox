@@ -3,16 +3,15 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.0.0
+Version:	2.0.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	895c6aa5890bb7e1f624a3cf65b457d4
+# Source0-md5:	45287e5c8df889462301ba5fb41e3986
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
-Patch2:		%{name}-gtk222.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	gdk-pixbuf-devel
@@ -41,7 +40,6 @@ uniksowych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p0
 
 %build
 cd ROX-Filer/src
