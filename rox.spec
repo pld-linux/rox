@@ -4,7 +4,7 @@ Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
 Version:	1.3.3
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
@@ -26,7 +26,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
-%define		_appsdir	%{_datadir}/ROX-apps
+%define		_appsdir	%{_libdir}/ROX-apps
 
 %description
 ROX-Filer is a small, fast and powerful filer for Linux and Unix
