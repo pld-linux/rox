@@ -1,0 +1,23 @@
+diff -urN aaa/rox-1.3.1/ROX-Filer/src/type.c rox-1.3.1/ROX-Filer/src/type.c
+--- aaa/rox-1.3.1/ROX-Filer/src/type.c	Mon May 27 18:06:18 2002
++++ rox-1.3.1/ROX-Filer/src/type.c	Fri Jun  7 21:46:25 2002
+@@ -947,6 +947,10 @@
+ 	path = "/usr/share/mime/mime-info";
+ 	if (mc_stat(path, &info) == 0)
+ 		filer_opendir(path, NULL);
++
++	path = "/usr/X11R6/share/mime-info";
++	  if (mc_stat(path, &info) == 0)
++			    filer_opendir(path, NULL);
+ }
+ 
+ static void reread_mime_files(guchar *unused)
+@@ -1256,6 +1260,8 @@
+ 	import_for_dir("/usr/share/mime/mime-info", globs, &got_freedesk);
+ 
+ 	import_for_dir("/usr/local/share/mime/mime-info", globs, &got_freedesk);
++
++	import_for_dir("/usr/X11R6/share/mime-info", globs, &got_freedesk);
+ 
+ 	tmp = g_strconcat(home_dir, "/.mime/mime-info", NULL);
+ 	import_for_dir(tmp, globs, &got_freedesk);
