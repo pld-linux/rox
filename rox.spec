@@ -111,7 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/rox
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/Help
-%{_datadir}/%{name}/Help/*.html
+%lang(en) %{_datadir}/%{name}/Help/Manual.html
+%lang(fr) %{_datadir}/%{name}/Help/Manual-fr.html
+%lang(it) %{_datadir}/%{name}/Help/Manual-it.html
 %dir %{_datadir}/%{name}/Messages
 %lang(cs) %{_datadir}/%{name}/Messages/cs.gmo
 %lang(da) %{_datadir}/%{name}/Messages/da.gmo
