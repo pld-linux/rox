@@ -12,7 +12,7 @@ Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
-BuildRequires:	gtk+2-devel >= 2.0.1
+BuildRequires:	gtk+2-devel >= 1:2.0.1
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
 Requires:	glib2 >= 2.0.3
