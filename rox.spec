@@ -3,7 +3,7 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	1.3.9
+Version:	1.3.10
 Release:	1
 License:	GPL
 Group:		X11/Applications
@@ -12,7 +12,6 @@ Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
-Patch2:		%{name}-fix-type.c.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	gdk-pixbuf-devel
@@ -41,10 +40,8 @@ uniksowych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
-#./ROX-Filer/AppRun --compile
 cd ROX-Filer/src
 %{__autoconf}
 %configure \
