@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ROX-Filer
 Comment=File manager
-Comment[pl]=Menad¿er plików
+Comment[pl]=MenedÅ¼er plikÃ³w
 Exec=rox
 Icon=rox.xpm
 Terminal=0
