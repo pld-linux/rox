@@ -3,12 +3,12 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.0.1
+Version:	2.1.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	45287e5c8df889462301ba5fb41e3986
+# Source0-md5:	b48089ea846036a1fc6107e0da876f62
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
@@ -55,7 +55,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT%{_datadir}/{mime-info,Choices}
 
 ln -sf %{_appsdir}/%{_name}/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
-ln -sf %{_datadir}/Choices/MIME-icons $RPM_BUILD_ROOT%{_pixmapsdir}/rox
+ln -s %{_appsdir}/%{_name}/ROX/MIME $RPM_BUILD_ROOT%{_pixmapsdir}/rox
 
 cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
@@ -104,8 +104,8 @@ test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
 %{_appsdir}/%{_name}/Help/*html
 %{_appsdir}/%{_name}/Messages
 %{_appsdir}/%{_name}/images
+%{_appsdir}/%{_name}/ROX
 %dir %{_datadir}/Choices
-%{_datadir}/Choices/MIME-icons
 %dir %{_datadir}/Choices/MIME-types
 %attr(755,root,root) %{_datadir}/Choices/MIME-types/*
 %{_desktopdir}/rox.desktop
