@@ -7,7 +7,6 @@ License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
 # Source0-md5:	8834d9f26297ae4c551745721147e01c
-# Source0-size:	1870515
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
