@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=ROX-Filer
-Comment=File manager
-Comment[pl]=Menad¿er plików
-Exec=rox
-Icon=rox.xpm
-Terminal=0
-Type=Application
-# vi: encoding=utf-8
