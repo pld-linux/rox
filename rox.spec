@@ -123,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_datadir}/%{name}/Messages/it.gmo
 %lang(ja) %{_datadir}/%{name}/Messages/ja.gmo
 %lang(nl) %{_datadir}/%{name}/Messages/nl.gmo
-%lang(no) %{_datadir}/%{name}/Messages/no.gmo
+%lang(nb) %{_datadir}/%{name}/Messages/no.gmo
 %lang(pl) %{_datadir}/%{name}/Messages/pl.gmo
 %lang(ru) %{_datadir}/%{name}/Messages/ru.gmo
 %lang(sv) %{_datadir}/%{name}/Messages/sv.gmo
