@@ -47,7 +47,7 @@ EOF
 echo ".so rox.1" >$RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
 
 gzip -9nf ROX-Filer/Help/Changes ROX-Filer/Help/README \
-	ROX-Filer/Help/README-es ROX-Filer/Help/TODO 
+	ROX-Filer/Help/README-es ROX-Filer/Help/TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
