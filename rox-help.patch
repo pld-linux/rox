@@ -1,7 +1,7 @@
-diff -urN aaa/rox-1.3.3/ROX-Filer/src/main.c rox-1.3.3/ROX-Filer/src/main.c
---- aaa/rox-1.3.3/ROX-Filer/src/main.c	Wed Jun 26 15:57:32 2002
-+++ rox-1.3.3/ROX-Filer/src/main.c	Thu Aug  1 22:51:13 2002
-@@ -99,16 +99,16 @@
+diff -ruN rox-2.1.3./ROX-Filer/src/main.c rox-2.1.3/ROX-Filer/src/main.c
+--- rox-2.1.3./ROX-Filer/src/main.c	2004-08-03 14:33:03.000000000 +0200
++++ rox-2.1.3/ROX-Filer/src/main.c	2004-08-03 14:41:03.908216808 +0200
+@@ -101,10 +101,10 @@
  		"see the file named COPYING.\n")
  
  #ifdef HAVE_GETOPT_LONG
@@ -14,7 +14,9 @@ diff -urN aaa/rox-1.3.3/ROX-Filer/src/main.c rox-1.3.3/ROX-Filer/src/main.c
  #  define SHORT_ONLY_WARNING	\
  		_("NOTE: Your system does not support long options - \n" \
  		"you must use the short versions instead.\n\n")
- #endif
+@@ -112,7 +112,7 @@
+ 
+ #define BUGS_TO "<rox-devel@lists.sourceforge.net>"
  
 -#define HELP N_("Usage: ROX-Filer/AppRun [OPTION]... [FILE]...\n"	\
 +#define HELP N_("Usage: rox [OPTION]... [FILE]...\n"	\
