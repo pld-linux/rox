@@ -1,15 +1,18 @@
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
-Version:	1.2.0
-Release:	2
+Version:	1.3.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
 URL:		http://rox.sourceforge.net/
-BuildRequires:	gtk+-devel
+BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	gdk-pixbuf-devel
-BuildRequires:	libxml-devel
+BuildRequires:	libxml2-devel >= 2.0.0
+BuildRequires:	pkgconfig
+Requires:	gtk+2 >= 2.0.0
+Requires:	libxml2 >= 2.0.0
 Requires:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -61,10 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 %dir %{_datadir}/ROX-Filer
 %{_datadir}/ROX-Filer/*.png
-%{_datadir}/ROX-Filer/*.xpm
 %{_datadir}/ROX-Filer/*.xml
 %{_datadir}/ROX-Filer/*.css
-%{_datadir}/ROX-Filer/Styles
 %{_datadir}/ROX-Filer/Help/*
 %{_datadir}/ROX-Filer/Messages/*
-%{_datadir}/ROX-Filer/pixmaps/*
+%{_datadir}/ROX-Filer/images/*
