@@ -1,0 +1,132 @@
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/appmenu.c rox-1.2.0/ROX-Filer/src/appmenu.c
+--- aaa/rox-1.2.0/ROX-Filer/src/appmenu.c	Wed Jan 30 14:08:59 2002
++++ rox-1.2.0/ROX-Filer/src/appmenu.c	Sun Jun 16 17:03:24 2002
+@@ -29,7 +29,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ 
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #include "global.h"
+ 
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/global.h rox-1.2.0/ROX-Filer/src/global.h
+--- aaa/rox-1.2.0/ROX-Filer/src/global.h	Wed Dec 26 21:33:21 2001
++++ rox-1.2.0/ROX-Filer/src/global.h	Sun Jun 16 17:09:07 2002
+@@ -119,7 +119,7 @@
+ #define SHOW(var, fmt) (g_print("[ " #var " = '%" #fmt "' ]\n", var))
+ 
+ 
+-#include <tree.h>
++#include <libxml/tree.h>
+ 
+ /* For very old versions of libxml... */
+ #ifndef xmlChildrenNode
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/icon.c rox-1.2.0/ROX-Filer/src/icon.c
+--- aaa/rox-1.2.0/ROX-Filer/src/icon.c	Wed Jan 16 18:58:45 2002
++++ rox-1.2.0/ROX-Filer/src/icon.c	Sun Jun 16 17:03:39 2002
+@@ -27,7 +27,7 @@
+ 
+ #include <gtk/gtkinvisible.h>
+ #include <gtk/gtk.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #include "global.h"
+ 
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/infobox.c rox-1.2.0/ROX-Filer/src/infobox.c
+--- aaa/rox-1.2.0/ROX-Filer/src/infobox.c	Mon Jan 21 18:03:51 2002
++++ rox-1.2.0/ROX-Filer/src/infobox.c	Sun Jun 16 17:05:15 2002
+@@ -27,7 +27,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <sys/param.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #include <gtk/gtk.h>
+ 
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/main.c rox-1.2.0/ROX-Filer/src/main.c
+--- aaa/rox-1.2.0/ROX-Filer/src/main.c	Thu Jan 24 15:25:49 2002
++++ rox-1.2.0/ROX-Filer/src/main.c	Sun Jun 16 17:05:23 2002
+@@ -37,7 +37,7 @@
+ #include <fcntl.h>
+ #include <pwd.h>
+ #include <grp.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #ifdef HAVE_GETOPT_LONG
+ #  include <getopt.h>
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/options.c rox-1.2.0/ROX-Filer/src/options.c
+--- aaa/rox-1.2.0/ROX-Filer/src/options.c	Sun Jan  6 15:54:02 2002
++++ rox-1.2.0/ROX-Filer/src/options.c	Sun Jun 16 17:05:30 2002
+@@ -68,7 +68,7 @@
+ #include <errno.h>
+ #include <ctype.h>
+ #include <gtk/gtk.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #include "global.h"
+ 
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/panel.c rox-1.2.0/ROX-Filer/src/panel.c
+--- aaa/rox-1.2.0/ROX-Filer/src/panel.c	Wed Jan 23 14:13:09 2002
++++ rox-1.2.0/ROX-Filer/src/panel.c	Sun Jun 16 17:05:36 2002
+@@ -28,7 +28,7 @@
+ #include <errno.h>
+ #include <ctype.h>
+ #include <unistd.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #include <gtk/gtk.h>
+ #include <gdk/gdkx.h>
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/pinboard.c rox-1.2.0/ROX-Filer/src/pinboard.c
+--- aaa/rox-1.2.0/ROX-Filer/src/pinboard.c	Wed Jan 23 14:13:09 2002
++++ rox-1.2.0/ROX-Filer/src/pinboard.c	Sun Jun 16 17:05:42 2002
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ #include <stdio.h>
+ #include <errno.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdkx.h>
+ #include <gtk/gtkinvisible.h>
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/remote.c rox-1.2.0/ROX-Filer/src/remote.c
+--- aaa/rox-1.2.0/ROX-Filer/src/remote.c	Wed Jan  2 16:36:04 2002
++++ rox-1.2.0/ROX-Filer/src/remote.c	Sun Jun 16 17:05:48 2002
+@@ -34,7 +34,7 @@
+ #include <X11/Xatom.h>
+ #include <gtk/gtk.h>
+ #include <gtk/gtkinvisible.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #include "global.h"
+ 
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/support.c rox-1.2.0/ROX-Filer/src/support.c
+--- aaa/rox-1.2.0/ROX-Filer/src/support.c	Wed Jan 30 18:02:12 2002
++++ rox-1.2.0/ROX-Filer/src/support.c	Sun Jun 16 17:05:53 2002
+@@ -36,7 +36,7 @@
+ #include <string.h>
+ #include <time.h>
+ #include <unistd.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ 
+ #include "global.h"
+ 
+diff -urN aaa/rox-1.2.0/ROX-Filer/src/usericons.c rox-1.2.0/ROX-Filer/src/usericons.c
+--- aaa/rox-1.2.0/ROX-Filer/src/usericons.c	Fri Feb  1 14:56:43 2002
++++ rox-1.2.0/ROX-Filer/src/usericons.c	Sun Jun 16 17:06:02 2002
+@@ -29,7 +29,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <fnmatch.h>
+-#include <parser.h>
++#include <libxml/parser.h>
+ #include <time.h>
+ 
+ #include "global.h"
