@@ -6,4 +6,5 @@ Exec=rox
 Icon=rox.xpm
 Terminal=0
 Type=Application
+Categories=Utility
 # vi: encoding=utf-8
