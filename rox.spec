@@ -1,12 +1,12 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.1.4
+Version:	2.2.0
 Release:	1
-License:	GPL
+License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	8834d9f26297ae4c551745721147e01c
+# Source0-md5:	0deefd9e7edd4e79cd0f18f423264ebb
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
@@ -119,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(da) %{_datadir}/%{name}/Messages/da.gmo
 %lang(de) %{_datadir}/%{name}/Messages/de.gmo
 %lang(es) %{_datadir}/%{name}/Messages/es.gmo
+%lang(fi) %{_datadir}/%{name}/Messages/fi.gmo
 %lang(fr) %{_datadir}/%{name}/Messages/fr.gmo
 %lang(hu) %{_datadir}/%{name}/Messages/hu.gmo
 %lang(it) %{_datadir}/%{name}/Messages/it.gmo
