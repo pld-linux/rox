@@ -7,7 +7,7 @@ Version:	1.3.7
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
+Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
