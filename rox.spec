@@ -30,7 +30,6 @@ dla Linuksa i innych uniksów.
 %prep
 %setup -q
 %patch0 -p1
-echo %{_platform}
 
 %build
 ./ROX-Filer/AppRun --compile
