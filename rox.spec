@@ -7,8 +7,8 @@ Version:	2.0.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-# Source0-md5:	895c6aa5890bb7e1f624a3cf65b457d4
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
+# Source0-md5:	895c6aa5890bb7e1f624a3cf65b457d4
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
