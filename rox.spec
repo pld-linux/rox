@@ -51,7 +51,7 @@ cd ROX-Filer/src
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_applnkdir}/Utilities} \
+	$RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_desktopdir}} \
 	$RPM_BUILD_ROOT%{_datadir}/{mime-info,Choices}
 
 ln -sf %{_appsdir}/%{_name}/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
@@ -73,7 +73,7 @@ EOF
 
 echo ".so rox.1" > $RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Utilities/
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -108,6 +108,6 @@ test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
 %{_datadir}/Choices/MIME-icons
 %dir %{_datadir}/Choices/MIME-types
 %attr(755,root,root) %{_datadir}/Choices/MIME-types/*
-%{_applnkdir}/Utilities/*
+%{_desktopdir}/rox.desktop
 %{_pixmapsdir}/*
 %{_datadir}/mime-info/*
