@@ -3,7 +3,7 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	1.3.6
+Version:	1.3.7
 Release:	1
 License:	GPL
 Group:		X11/Applications
@@ -11,9 +11,9 @@ Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
-Patch2:		%{name}-sortbutton.patch
-Patch3:		%{name}-fix-type.c.patch
+Patch2:		%{name}-fix-type.c.patch
 URL:		http://rox.sourceforge.net/
+BuildRequires:	autoconf
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gtk+2-devel >= 2.0.1
 BuildRequires:	libxml2-devel >= 2.0.0
@@ -40,11 +40,16 @@ uniksowych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-#%patch2 -p1
-%patch3 -p1
+%patch2 -p1
 
 %build
-./ROX-Filer/AppRun --compile
+#./ROX-Filer/AppRun --compile
+cd ROX-Filer/src
+%{__autoconf}
+%configure \
+	--enable-rox \
+	--with-platform="`uname -s`-`echo \"\`uname -m\`\"|sed s/i.86/ix86/`"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
