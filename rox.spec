@@ -2,7 +2,7 @@ Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
 Version:	2.1.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
@@ -82,9 +82,9 @@ cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
 #!/bin/sh
 
 if [ -n "\$HOME_ETC" ]; then
-        USERCHOICES=\$HOME_ETC/.%{name}
+	USERCHOICES=\$HOME_ETC/.%{name}
 else
-        USERCHOICES=~/.%{name}
+	USERCHOICES=~/.%{name}
 fi
 		
 export CHOICESPATH=\$USERCHOICES:%{_datadir}/%{name}
