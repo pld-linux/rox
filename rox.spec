@@ -40,7 +40,7 @@ install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 # start-up script
 cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
 #!/bin/sh
-CHOICESPATH=~/Choices:%{_datadir}/Choices; export CHOICESPATH
+export CHOICESPATH=~/Choices:%{_datadir}/Choices:%{_pixmapsdir}/rox
 exec %{_datadir}/ROX-Filer/AppRun "\$@"
 EOF
 
