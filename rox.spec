@@ -1,3 +1,5 @@
+
+%define _platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
@@ -28,6 +30,7 @@ dla Linuksa i innych uniksów.
 %prep
 %setup -q
 %patch0 -p1
+echo %{_platform}
 
 %build
 ./ROX-Filer/AppRun --compile
@@ -55,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ROX-Filer/Help/{*.html,README*,TODO,Changes}
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_datadir}/ROX-Filer/Linux-*
+%attr(755,root,root) %{_datadir}/ROX-Filer/%{_platform}
 %attr(755,root,root) %{_datadir}/ROX-Filer/AppRun
 %{_mandir}/man1/*
 %dir %{_datadir}/ROX-Filer
