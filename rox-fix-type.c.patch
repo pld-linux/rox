@@ -1,0 +1,11 @@
+diff -ruN rox-1.3.6./ROX-Filer/src/type.c rox-1.3.6/ROX-Filer/src/type.c
+--- rox-1.3.6./ROX-Filer/src/type.c	Fri Jan 24 22:42:35 2003
++++ rox-1.3.6/ROX-Filer/src/type.c	Fri Jan 24 23:10:42 2003
+@@ -987,6 +987,7 @@
+ static void edit_mime_types(guchar *unused)
+ {
+ 	const guchar *path;
++	struct stat info;
+ 
+ 	mkdir(make_path(home_dir, ".mime"), 0700);
+ 	path = make_path(home_dir, ".mime/packages");
