@@ -2,18 +2,20 @@ Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
 Version:	1.3.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
 Source1:	%{name}.desktop
+Patch0:		%{name}-fix-mime-info-path.patch
 URL:		http://rox.sourceforge.net/
-BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	gdk-pixbuf-devel
+BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
 Requires:	gtk+2 >= 2.0.0
 Requires:	libxml2 >= 2.0.0
+Requires:	shared-mime-info
 Conflicts: rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,6 +32,7 @@ dla Linuksa i innych uniksów.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ./ROX-Filer/AppRun --compile
@@ -44,7 +47,8 @@ ln -sf  ../ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
 ln -sf %{_datadir}/Choices/MIME-icons $RPM_BUILD_ROOT%{_pixmapsdir}/rox
 cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
 cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
-cp ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
+install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
+install rox.mimeinfo $RPM_BUILD_ROOT%{_datadir}/mime-info
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 # start-up script
@@ -85,3 +89,4 @@ test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
 %attr(755,root,root) %{_datadir}/Choices/MIME-types/*
 %{_applnkdir}/Utilities/*
 %{_pixmapsdir}/*
+%{_datadir}/mime-info/*
