@@ -1,10 +1,9 @@
-%define		_name ROX-Filer
-%define		_platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
+
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
 Version:	2.1.0
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
@@ -23,7 +22,7 @@ Requires:	shared-mime-info >= 0.12-2
 Conflicts:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_appsdir	%{_libdir}/ROX-apps
+%define		_platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
 
 %description
 ROX-Filer is a small, fast and powerful file manager for Linux and
@@ -41,43 +40,63 @@ uniksowych.
 %build
 cd ROX-Filer/src
 %{__autoconf}
+
 %configure \
-	--enable-rox \
-	--with-platform="`uname -s`-`echo \"\`uname -m\`\"|sed s/i.86/ix86/`"
+	--with-platform=%{_platform}
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_desktopdir}} \
-	$RPM_BUILD_ROOT%{_datadir}/{mime/packages,Choices}
 
-ln -sf %{_appsdir}/%{_name}/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
-ln -s %{_appsdir}/%{_name}/ROX/MIME $RPM_BUILD_ROOT%{_pixmapsdir}/rox
+install -d \
+	$RPM_BUILD_ROOT%{_bindir} \
+	$RPM_BUILD_ROOT%{_datadir}/%{name} \
+	$RPM_BUILD_ROOT%{_datadir}/mime/packages \
+	$RPM_BUILD_ROOT%{_mandir}/man1 \
+	$RPM_BUILD_ROOT%{_desktopdir} \
+	$RPM_BUILD_ROOT%{_iconsdir} \
+	$RPM_BUILD_ROOT%{_pixmapsdir}
 
-cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}
-cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
+install ROX-Filer/%{_platform}/ROX-Filer $RPM_BUILD_ROOT%{_bindir}
 
-install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_appsdir}/%{_name}
+install ROX-Filer/*.{css,png,xml} $RPM_BUILD_ROOT%{_datadir}/%{name}
+
+cp -R ROX-Filer/{Help,Messages,images} $RPM_BUILD_ROOT%{_datadir}/%{name}
+
+cp -R Choices/MIME-types $RPM_BUILD_ROOT%{_datadir}/%{name}
+
 install rox.xml $RPM_BUILD_ROOT%{_datadir}/mime/packages
-install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-# start-up script
-cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
-#!/bin/sh
-CHOICESPATH=~/Choices:%{_datadir}/Choices; export CHOICESPATH
-exec %{_appsdir}/%{_name}/AppRun "\$@"
-EOF
+cp -R ROX-Filer/ROX $RPM_BUILD_ROOT%{_iconsdir}
 
-echo ".so rox.1" > $RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
+install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_datadir}/%{name}
+install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
+install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
+echo ".so rox.1" > $RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
+
+# Preparing start-up script
+cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
+#!/bin/sh
+
+if [ -n "\$HOME_ETC" ]; then
+        USERCHOICES=\$HOME_ETC/.%{name}
+else
+        USERCHOICES=~/.%{name}
+fi
+		
+export CHOICESPATH=\$USERCHOICES:%{_datadir}/%{name}
+
+export APP_DIR=%{_datadir}/%{name}
+
+exec %{_bindir}/ROX-Filer "\$@"
+EOF
+
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%pre
-test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
 
 %post
 %{_bindir}/update-mime-database %{_datadir}/mime
@@ -88,24 +107,36 @@ test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
 %files
 %defattr(644,root,root,755)
 %doc ROX-Filer/Help/{Changes,README,README-es,TODO}
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_appsdir}/%{_name}/%{_platform}
-%attr(755,root,root) %{_appsdir}/%{_name}/AppRun
-%{_mandir}/man1/*
-%dir %{_appsdir}
-%dir %{_appsdir}/%{_name}
-%dir %{_appsdir}/%{_name}/Help
-%{_appsdir}/%{_name}/*.png
-%{_appsdir}/%{_name}/*.xml
-%{_appsdir}/%{_name}/*.css
-%{_appsdir}/%{_name}/.DirIcon
-%{_appsdir}/%{_name}/Help/*html
-%{_appsdir}/%{_name}/Messages
-%{_appsdir}/%{_name}/images
-%{_appsdir}/%{_name}/ROX
-%dir %{_datadir}/Choices
-%dir %{_datadir}/Choices/MIME-types
-%attr(755,root,root) %{_datadir}/Choices/MIME-types/*
+%attr(755,root,root) %{_bindir}/ROX-Filer
+%attr(755,root,root) %{_bindir}/rox
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/Help
+%{_datadir}/%{name}/Help/*.html
+%dir %{_datadir}/%{name}/Messages
+%lang(cs) %{_datadir}/%{name}/Messages/cs.gmo
+%lang(da) %{_datadir}/%{name}/Messages/da.gmo
+%lang(de) %{_datadir}/%{name}/Messages/de.gmo
+%lang(es) %{_datadir}/%{name}/Messages/es.gmo
+%lang(fr) %{_datadir}/%{name}/Messages/fr.gmo
+%lang(hu) %{_datadir}/%{name}/Messages/hu.gmo
+%lang(it) %{_datadir}/%{name}/Messages/it.gmo
+%lang(ja) %{_datadir}/%{name}/Messages/ja.gmo
+%lang(nl) %{_datadir}/%{name}/Messages/nl.gmo
+%lang(no) %{_datadir}/%{name}/Messages/no.gmo
+%lang(pl) %{_datadir}/%{name}/Messages/pl.gmo
+%lang(ru) %{_datadir}/%{name}/Messages/ru.gmo
+%lang(sv) %{_datadir}/%{name}/Messages/sv.gmo
+%lang(zh_CN) %{_datadir}/%{name}/Messages/zh_CN.gmo
+%lang(zh_TW) %{_datadir}/%{name}/Messages/zh_TW.gmo
+%{_datadir}/%{name}/images
+%{_datadir}/%{name}/*.png
+%{_datadir}/%{name}/*.xml
+%{_datadir}/%{name}/*.css
+%{_datadir}/%{name}/.DirIcon
+%dir %{_datadir}/%{name}/MIME-types
+%attr(755,root,root) %{_datadir}/%{name}/MIME-types/*
+%{_datadir}/mime/packages/rox.xml
 %{_desktopdir}/rox.desktop
-%{_pixmapsdir}/*
-%{_datadir}/mime/*
+%{_iconsdir}/ROX
+%{_pixmapsdir}/rox.png
+%{_mandir}/man1/*
