@@ -6,7 +6,7 @@ diff -ruN rox-1.3.4-/ROX-Filer/src/type.c rox-1.3.4/ROX-Filer/src/type.c
  	if (mc_stat(path, &info) == 0)
  		filer_opendir(path, NULL, NULL);
 +
-+	path = "/usr/X11R6/share/mime-info";
++	path = "/usr/share/mime-info";
 +	if (mc_stat(path, &info) == 0)
 +		filer_opendir(path, NULL, NULL);
  }
@@ -15,8 +15,8 @@ diff -ruN rox-1.3.4-/ROX-Filer/src/type.c rox-1.3.4/ROX-Filer/src/type.c
 @@ -1218,6 +1222,7 @@
  
  	import_file("/usr/share/mime/globs", globs);
++	import_file("/usr/share/mime-info/globs", globs);
  	import_file("/usr/local/share/mime/globs", globs);
-+	import_file("/usr/X11R6/share/mime-info/globs", globs);
  
  	tmp = g_strconcat(home_dir, "/.mime/globs", NULL);
  	import_file(tmp, globs);
