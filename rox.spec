@@ -1,12 +1,13 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.1.3
-Release:	2
+Version:	2.1.4
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	6075e423d0d4e810bb23b5806871f4e9
+# Source0-md5:	8834d9f26297ae4c551745721147e01c
+# Source0-size:	1870515
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
@@ -105,7 +106,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ROX-Filer/Help/{Changes,README,README-es,TODO}
+%doc ROX-Filer/Help/{Changes,README,TODO}
+%lang(es) %doc ROX-Filer/Help/README-es
 %attr(755,root,root) %{_bindir}/ROX-Filer
 %attr(755,root,root) %{_bindir}/rox
 %dir %{_datadir}/%{name}
@@ -125,7 +127,9 @@ rm -rf $RPM_BUILD_ROOT
 %lang(nl) %{_datadir}/%{name}/Messages/nl.gmo
 %lang(nb) %{_datadir}/%{name}/Messages/no.gmo
 %lang(pl) %{_datadir}/%{name}/Messages/pl.gmo
+%lang(pt_BR) %{_datadir}/%{name}/Messages/pt_BR.gmo
 %lang(ru) %{_datadir}/%{name}/Messages/ru.gmo
+%lang(ro) %{_datadir}/%{name}/Messages/ro.gmo
 %lang(sv) %{_datadir}/%{name}/Messages/sv.gmo
 %lang(zh_CN) %{_datadir}/%{name}/Messages/zh_CN.gmo
 %lang(zh_TW) %{_datadir}/%{name}/Messages/zh_TW.gmo
