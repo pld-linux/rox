@@ -3,12 +3,12 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	1.3.10
+Version:	2.0.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
+# Source0-md5:	895c6aa5890bb7e1f624a3cf65b457d4
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	088504b05ee37b0651c05a71e076bf79
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
@@ -21,7 +21,7 @@ BuildRequires:	pkgconfig
 Requires:	glib2 >= 2.0.3
 Requires:	gtk+2 >= 2.0.1
 Requires:	libxml2 >= 2.0.0
-Requires:	shared-mime-info >= 0.8
+Requires:	shared-mime-info >= 0.11
 Conflicts:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
