@@ -1,6 +1,5 @@
-%define _appsdir /usr/X11R6/share/ROX-apps
-%define _name ROX-Filer
-%define _platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
+%define		_name ROX-Filer
+%define		_platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
@@ -27,6 +26,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
+%define		_appsdir	%{_datadir}/ROX-apps
 
 %description
 ROX-Filer is a small, fast and powerful filer for Linux and Unix
@@ -48,14 +48,16 @@ dla Linuksa i innych uniksów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1}
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_applnkdir}/Utilities}
-install -d $RPM_BUILD_ROOT%{_datadir}/{mime-info,Choices}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1} \
+	$RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_applnkdir}/Utilities} \
+	$RPM_BUILD_ROOT%{_datadir}/{mime-info,Choices}
 
 ln -sf %{_appsdir}/%{_name}/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
 ln -sf %{_datadir}/Choices/MIME-icons $RPM_BUILD_ROOT%{_pixmapsdir}/rox
+
 cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
+
 install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 install rox.xml $RPM_BUILD_ROOT%{_datadir}/mime-info
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
