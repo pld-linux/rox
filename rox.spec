@@ -4,8 +4,8 @@
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
-Version:	1.3.1
-Release:	3
+Version:	1.3.2
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
