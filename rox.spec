@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ROX-Filer/Help/{*.html,README*,TODO,Changes}
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_datadir}/ROX-Filer/Linux-ix86
+%attr(755,root,root) %{_datadir}/ROX-Filer/Linux-*
 %attr(755,root,root) %{_datadir}/ROX-Filer/AppRun
 %{_mandir}/man1/*
 %dir %{_datadir}/ROX-Filer
