@@ -3,7 +3,7 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	1.3.8
+Version:	1.3.9
 Release:	1
 License:	GPL
 Group:		X11/Applications
