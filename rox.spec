@@ -4,14 +4,13 @@ Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
 Version:	2.1.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
 # Source0-md5:	b48089ea846036a1fc6107e0da876f62
 Source1:	%{name}.desktop
-Patch0:		%{name}-fix-mime-info-path.patch
-Patch1:		%{name}-help.patch
+Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	gtk+2-devel >= 2.0.1
@@ -38,7 +37,6 @@ uniksowych.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 cd ROX-Filer/src
@@ -52,7 +50,7 @@ cd ROX-Filer/src
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_desktopdir}} \
-	$RPM_BUILD_ROOT%{_datadir}/{mime-info,Choices}
+	$RPM_BUILD_ROOT%{_datadir}/{mime,Choices}
 
 ln -sf %{_appsdir}/%{_name}/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
 ln -s %{_appsdir}/%{_name}/ROX/MIME $RPM_BUILD_ROOT%{_pixmapsdir}/rox
@@ -61,7 +59,7 @@ cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
 
 install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_appsdir}/%{_name}
-install rox.xml $RPM_BUILD_ROOT%{_datadir}/mime-info
+install rox.xml $RPM_BUILD_ROOT%{_datadir}/mime
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 # start-up script
@@ -80,12 +78,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %pre
 test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
-
-%post
-%{_bindir}/update-mime-database %{_datadir}/mime-info
-
-%postun
-%{_bindir}/update-mime-database %{_datadir}/mime-info
 
 %files
 %defattr(644,root,root,755)
@@ -110,4 +102,4 @@ test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
 %attr(755,root,root) %{_datadir}/Choices/MIME-types/*
 %{_desktopdir}/rox.desktop
 %{_pixmapsdir}/*
-%{_datadir}/mime-info/*
+%{_datadir}/mime/*
