@@ -5,8 +5,6 @@ Version:	1.2.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(pl):	X11/Aplikacje
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
 URL:		http://rox.sourceforge.net/
 BuildRequires:	gtk+-devel
