@@ -34,7 +34,6 @@ dla Linuksa i innych uniksów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/{%{_bindir},%{_datadir}/ROX-Filer,%{_mandir}/man1}
 
 cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
@@ -43,7 +42,7 @@ install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 # start-up script
 cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
 #!/bin/sh
-export CHOICESPATH=~/Choices:%{_datadir}/Choices
+CHOICESPATH=~/Choices:%{_datadir}/Choices; export CHOICESPATH
 exec %{_datadir}/ROX-Filer/AppRun "\$@"
 EOF
 
@@ -57,10 +56,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc ROX-Filer/Help/*.html ROX-Filer/Help/*.gz
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_datadir}/ROX-Filer/Linux-ix86/*
 %attr(755,root,root) %{_datadir}/ROX-Filer/AppRun
 %{_mandir}/man1/*
+%dir %{_datadir}/ROX-Filer
 %{_datadir}/ROX-Filer/*.png
 %{_datadir}/ROX-Filer/*.xpm
 %{_datadir}/ROX-Filer/*.xml
@@ -69,4 +70,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/ROX-Filer/Help/*
 %{_datadir}/ROX-Filer/Messages/*
 %{_datadir}/ROX-Filer/pixmaps/*
-%doc ROX-Filer/Help/*.html ROX-Filer/Help/*.gz
