@@ -14,9 +14,6 @@ BuildRequires: gtk+-devel
 BuildRequires: gdk-pixbuf-devel
 BuildRequires: libxml-devel
 Requires: rox-base
-Requires: gtk+ >= 1.2.0
-Requires: gdk-pixbuf
-Requires: libxml
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
