@@ -3,7 +3,7 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	1.3.4
+Version:	1.3.5
 Release:	1
 License:	GPL
 Group:		X11/Applications
@@ -41,7 +41,7 @@ uniksowych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
 
 %build
 ./ROX-Filer/AppRun --compile
