@@ -1,8 +1,8 @@
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
-Version:	1.3.0
-Release:	3
+Version:	1.3.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
@@ -14,7 +14,7 @@ BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
 Requires:	gtk+2 >= 2.0.0
 Requires:	libxml2 >= 2.0.0
-Requires:	rox-base
+Conflicts: rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -37,10 +37,13 @@ dla Linuksa i innych uniksów.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/ROX-Filer,%{_mandir}/man1}
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Utilities}
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/{,rox},%{_applnkdir}/Utilities}
+install -d $RPM_BUILD_ROOT%{_datadir}/{mime-info,Choices}
 
 ln -sf  ../ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
+ln -sf %{_datadir}/Choices/MIME-icons $RPM_BUILD_ROOT%{_pixmapsdir}/rox
 cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
+cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
 cp ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -55,15 +58,15 @@ echo ".so rox.1" >$RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Utilities/
 
-gzip -9nf ROX-Filer/Help/Changes ROX-Filer/Help/README \
-	ROX-Filer/Help/README-es ROX-Filer/Help/TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%pre
+test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
+
 %files
 %defattr(644,root,root,755)
-%doc ROX-Filer/Help/*.html ROX-Filer/Help/*.gz
+%doc ROX-Filer/Help/{*.html,Changes,README,README-es,TODO}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_datadir}/ROX-Filer/Linux-ix86
 %attr(755,root,root) %{_datadir}/ROX-Filer/AppRun
@@ -76,5 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/ROX-Filer/Help
 %{_datadir}/ROX-Filer/Messages
 %{_datadir}/ROX-Filer/images
+%dir %{_datadir}/Choices
+%{_datadir}/Choices/MIME-icons
+%dir %{_datadir}/Choices/MIME-types
+%attr(755,root,root) %{_datadir}/Choices/MIME-types/*
 %{_applnkdir}/Utilities/*
-%{_pixmapsdir}/rox.png
+%{_pixmapsdir}/*
