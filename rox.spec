@@ -3,8 +3,8 @@
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
-Version:	1.3.3
-Release:	4
+Version:	1.3.4
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
@@ -12,12 +12,12 @@ Source1:	%{name}.desktop
 Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
 Patch2:		%{name}-sortbutton.patch
-Patch3:		%{name}-selbutton.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gtk+2-devel >= 2.0.1
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
+Requires:	glib2 >= 2.0.3
 Requires:	gtk+2 >= 2.0.1
 Requires:	libxml2 >= 2.0.0
 Requires:	shared-mime-info >= 0.8
@@ -41,7 +41,6 @@ dla Linuksa i innych uniksów.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 ./ROX-Filer/AppRun --compile
