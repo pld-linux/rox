@@ -19,7 +19,7 @@ BuildRequires:	pkgconfig
 Requires:	glib2 >= 2.0.3
 Requires:	gtk+2 >= 2.0.1
 Requires:	libxml2 >= 2.0.0
-Requires:	shared-mime-info >= 0.11
+Requires:	shared-mime-info >= 0.12-2
 Conflicts:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
