@@ -8,12 +8,12 @@ Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
-Patch0: %{name}-configfix.patch
+Patch0:		%{name}-configfix.patch
 URL:		http://rox.sourceforge.net/
-BuildRequires: gtk+-devel
-BuildRequires: gdk-pixbuf-devel
-BuildRequires: libxml-devel
-Requires: rox-base
+BuildRequires:	gtk+-devel
+BuildRequires:	gdk-pixbuf-devel
+BuildRequires:	libxml-devel
+Requires:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -45,18 +45,14 @@ install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 # start-up script
 cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
 #!/bin/sh
-export CHOICESPATH=%{_datadir}/Choices
+export CHOICESPATH=~/Choices:%{_datadir}/Choices
 exec %{_datadir}/ROX-Filer/AppRun "\$@"
 EOF
 
+echo ".so rox.1" >$RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
+
 gzip -9nf ROX-Filer/Help/Changes ROX-Filer/Help/README \
 	ROX-Filer/Help/README-es ROX-Filer/Help/TODO 
-
-%post
-ln -s %{_mandir}/man1/%{name}.1.gz %{_mandir}/man1/ROX-Filer.1.gz
-
-%postun
-rm -f %{_mandir}/man1/ROX-Filer.1.gz
 
 %clean
 rm -rf $RPM_BUILD_ROOT
