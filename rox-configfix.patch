@@ -1,0 +1,57 @@
+diff -r -C 2 /home/grzegol/download/rox-1.1.12/ROX-Filer/src/Makefile.in rox-1.1.12/ROX-Filer/src/Makefile.in
+*** /home/grzegol/download/rox-1.1.12/ROX-Filer/src/Makefile.in	Thu Jan 17 15:09:14 2002
+--- rox-1.1.12/ROX-Filer/src/Makefile.in	Sat Jan 26 17:32:24 2002
+***************
+*** 2,5 ****
+--- 2,7 ----
+  GTK_LIBS = @GTK_LIBS@
+  XML_CONFIG = @XML_CONFIG@
++ GLIB_CFLAGS = @GLIB_CFLAGS@
++ GLIB_LIBS = @GLIB_LIBS@
+  GDK_PIXBUF_CFLAGS = @GDK_PIXBUF_CFLAGS@
+  SHELL = @SHELL@
+***************
+*** 13,18 ****
+  CC = @CC@
+  
+! CFLAGS = @CFLAGS@ @LFS_CFLAGS@ `${GTK_CFLAGS}` `${XML_CONFIG} --cflags`
+! LDFLAGS = @LDFLAGS@ @LFS_LDFLAGS@ `${GTK_LIBS}` ${LIBS} @LFS_LIBS@
+  EXEC = ${PLATFORM_DIR}/${PROG}
+  
+--- 15,22 ----
+  CC = @CC@
+  
+! CFLAGS = @CFLAGS@ @LFS_CFLAGS@ `${GTK_CFLAGS}` `${XML_CONFIG} --cflags` \
+! 	`${GLIB_CFLAGS}`
+! LDFLAGS = @LDFLAGS@ @LFS_LDFLAGS@ `${GTK_LIBS}` ${LIBS} @LFS_LIBS@ \
+! 	`${GLIB_LIBS}`
+  EXEC = ${PLATFORM_DIR}/${PROG}
+  
+diff -r -C 2 /home/grzegol/download/rox-1.1.12/ROX-Filer/src/configure.in rox-1.1.12/ROX-Filer/src/configure.in
+*** /home/grzegol/download/rox-1.1.12/ROX-Filer/src/configure.in	Tue Jan 22 14:40:18 2002
+--- rox-1.1.12/ROX-Filer/src/configure.in	Sat Jan 26 17:32:14 2002
+***************
+*** 127,130 ****
+--- 127,148 ----
+    fi
+  fi
++ 
++ dnl Make sure we have glib
++ AC_MSG_CHECKING(for glib library)
++ if test -z "$GLIB_CONFIG"; then
++ 	GLIB_CONFIG=glib-config
++ fi
++ GLIB_CFLAGS="$GLIB_CONFIG --cflags"
++ GLIB_LIBS="$GLIB_CONFIG --libs"
++ [
++ if [ -n "$GLIB_LIBS" ]; then
++ ]
++ 	AC_MSG_RESULT(yes - use '$GLIB_LIBS')
++ else
++ 	AC_MSG_ERROR(can't run '$GLIB_CONFIG --libs' - make sure it is in your PATH)
++ fi
++ AC_SUBST(GLIB_CFLAGS)
++ AC_SUBST(GLIB_LIBS)
++ 															
+  AC_SUBST(GTK_CFLAGS)
+  AC_SUBST(GTK_LIBS)
