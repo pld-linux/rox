@@ -12,11 +12,3 @@ diff -ruN rox-1.3.4-/ROX-Filer/src/type.c rox-1.3.4/ROX-Filer/src/type.c
  }
  
  static GList *build_type_edit(Option *none, xmlNode *node, guchar *label)
-@@ -1218,6 +1222,7 @@
- 
- 	import_file("/usr/share/mime/globs", globs);
-+	import_file("/usr/share/mime-info/globs", globs);
- 	import_file("/usr/local/share/mime/globs", globs);
- 
- 	tmp = g_strconcat(home_dir, "/.mime/globs", NULL);
- 	import_file(tmp, globs);
