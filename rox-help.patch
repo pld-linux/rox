@@ -1,0 +1,23 @@
+diff -urN aaa/rox-1.3.3/ROX-Filer/src/main.c rox-1.3.3/ROX-Filer/src/main.c
+--- aaa/rox-1.3.3/ROX-Filer/src/main.c	Wed Jun 26 15:57:32 2002
++++ rox-1.3.3/ROX-Filer/src/main.c	Thu Aug  1 22:51:13 2002
+@@ -99,16 +99,16 @@
+ 		"see the file named COPYING.\n")
+ 
+ #ifdef HAVE_GETOPT_LONG
+-#  define USAGE   N_("Try `ROX-Filer/AppRun --help' for more information.\n")
++#  define USAGE   N_("Try `rox --help' for more information.\n")
+ #  define SHORT_ONLY_WARNING ""
+ #else
+-#  define USAGE   N_("Try `ROX-Filer/AppRun -h' for more information.\n")
++#  define USAGE   N_("Try `rox -h' for more information.\n")
+ #  define SHORT_ONLY_WARNING	\
+ 		_("NOTE: Your system does not support long options - \n" \
+ 		"you must use the short versions instead.\n\n")
+ #endif
+ 
+-#define HELP N_("Usage: ROX-Filer/AppRun [OPTION]... [FILE]...\n"	\
++#define HELP N_("Usage: rox [OPTION]... [FILE]...\n"	\
+        "Open each directory or file listed, or the current working\n"	\
+        "directory if no arguments are given.\n\n"			\
+        "  -b, --bottom=PANEL	open PAN as a bottom-edge panel\n"	\
