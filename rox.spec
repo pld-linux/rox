@@ -1,8 +1,11 @@
+%define _appsdir /usr/X11R6/share/ROX-apps
+%define _name ROX-Filer
+%define _platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
 Version:	1.3.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
@@ -39,15 +42,15 @@ dla Linuksa i innych uniksów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/ROX-Filer,%{_mandir}/man1}
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/{,rox},%{_applnkdir}/Utilities}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_applnkdir}/Utilities}
 install -d $RPM_BUILD_ROOT%{_datadir}/{mime-info,Choices}
 
-ln -sf  ../ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
+ln -sf %{_appsdir}/%{_name}/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
 ln -sf %{_datadir}/Choices/MIME-icons $RPM_BUILD_ROOT%{_pixmapsdir}/rox
-cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
+cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
-install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_datadir}/ROX-Filer
+install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 install rox.mimeinfo $RPM_BUILD_ROOT%{_datadir}/mime-info
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -55,7 +58,7 @@ install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
 #!/bin/sh
 CHOICESPATH=~/Choices:%{_datadir}/Choices; export CHOICESPATH
-exec %{_datadir}/ROX-Filer/AppRun "\$@"
+exec %{_appsdir}/%{_name}/AppRun "\$@"
 EOF
 
 echo ".so rox.1" >$RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
@@ -70,19 +73,21 @@ test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
 
 %files
 %defattr(644,root,root,755)
-%doc ROX-Filer/Help/{*.html,Changes,README,README-es,TODO}
+%doc ROX-Filer/Help/{Changes,README,README-es,TODO}
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_datadir}/ROX-Filer/Linux-ix86
-%attr(755,root,root) %{_datadir}/ROX-Filer/AppRun
+%attr(755,root,root) %{_appsdir}/%{_name}/Linux*
+%attr(755,root,root) %{_appsdir}/%{_name}/AppRun
 %{_mandir}/man1/*
-%dir %{_datadir}/ROX-Filer
-%{_datadir}/ROX-Filer/*.png
-%{_datadir}/ROX-Filer/*.xml
-%{_datadir}/ROX-Filer/*.css
-%{_datadir}/ROX-Filer/.DirIcon
-%{_datadir}/ROX-Filer/Help
-%{_datadir}/ROX-Filer/Messages
-%{_datadir}/ROX-Filer/images
+%dir %{_appsdir}
+%dir %{_appsdir}/%{_name}
+%dir %{_appsdir}/%{_name}/Help
+%{_appsdir}/%{_name}/*.png
+%{_appsdir}/%{_name}/*.xml
+%{_appsdir}/%{_name}/*.css
+%{_appsdir}/%{_name}/.DirIcon
+%{_appsdir}/%{_name}/Help/*html
+%{_appsdir}/%{_name}/Messages
+%{_appsdir}/%{_name}/images
 %dir %{_datadir}/Choices
 %{_datadir}/Choices/MIME-icons
 %dir %{_datadir}/Choices/MIME-types
