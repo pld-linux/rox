@@ -14,7 +14,6 @@ Patch0:		%{name}-fix-mime-info-path.patch
 Patch1:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
-BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gtk+2-devel >= 2.0.1
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
