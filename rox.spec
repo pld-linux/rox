@@ -2,7 +2,7 @@ Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
 Version:	1.2.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
@@ -40,7 +40,7 @@ install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 # start-up script
 cat > $RPM_BUILD_ROOT%{_bindir}/%{name} << EOF
 #!/bin/sh
-export CHOICESPATH=~/Choices:%{_datadir}/Choices:%{_pixmapsdir}/rox
+CHOICESPATH=~/Choices:%{_datadir}/Choices; export CHOICESPATH
 exec %{_datadir}/ROX-Filer/AppRun "\$@"
 EOF
 
