@@ -1,18 +1,18 @@
-diff -urN aaa/rox-1.3.3/ROX-Filer/src/type.c rox-1.3.3/ROX-Filer/src/type.c
---- aaa/rox-1.3.3/ROX-Filer/src/type.c	Wed Jul 24 19:17:57 2002
-+++ rox-1.3.3/ROX-Filer/src/type.c	Fri Jul 26 15:03:51 2002
-@@ -1001,6 +1001,10 @@
- 	path = "/usr/share/mime/mime-info";
+diff -ruN rox-1.3.4-/ROX-Filer/src/type.c rox-1.3.4/ROX-Filer/src/type.c
+--- rox-1.3.4-/ROX-Filer/src/type.c	Mon Sep  2 17:33:21 2002
++++ rox-1.3.4/ROX-Filer/src/type.c	Sat Nov 30 01:07:06 2002
+@@ -1004,6 +1004,10 @@
+ 	path = "/usr/share/mime/packages";
  	if (mc_stat(path, &info) == 0)
- 		filer_opendir(path, NULL);
+ 		filer_opendir(path, NULL, NULL);
 +
 +	path = "/usr/X11R6/share/mime-info";
-+	  if (mc_stat(path, &info) == 0)
-+			    filer_opendir(path, NULL);
++	if (mc_stat(path, &info) == 0)
++		filer_opendir(path, NULL, NULL);
  }
  
- static void reread_mime_files(guchar *unused)
-@@ -1236,6 +1240,7 @@
+ static GList *build_type_edit(Option *none, xmlNode *node, guchar *label)
+@@ -1218,6 +1222,7 @@
  
  	import_file("/usr/share/mime/globs", globs);
  	import_file("/usr/local/share/mime/globs", globs);
