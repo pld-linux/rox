@@ -1,12 +1,12 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.1.2
+Version:	2.1.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	c08a28f259e7e4bb01b56ed174ea7c12
+# Source0-md5:	6075e423d0d4e810bb23b5806871f4e9
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
@@ -59,7 +59,7 @@ install -d \
 
 install ROX-Filer/%{_platform}/ROX-Filer $RPM_BUILD_ROOT%{_bindir}
 
-install ROX-Filer/*.{css,png,xml} $RPM_BUILD_ROOT%{_datadir}/%{name}
+install ROX-Filer/*.{css,xml} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 cp -R ROX-Filer/{Help,Messages,images} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
@@ -130,7 +130,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(zh_CN) %{_datadir}/%{name}/Messages/zh_CN.gmo
 %lang(zh_TW) %{_datadir}/%{name}/Messages/zh_TW.gmo
 %{_datadir}/%{name}/images
-%{_datadir}/%{name}/*.png
 %{_datadir}/%{name}/*.xml
 %{_datadir}/%{name}/*.css
 %{_datadir}/%{name}/.DirIcon
