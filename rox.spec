@@ -48,15 +48,12 @@ EOF
 
 echo ".so rox.1" >$RPM_BUILD_ROOT%{_mandir}/man1/ROX-Filer.1
 
-gzip -9nf ROX-Filer/Help/Changes ROX-Filer/Help/README \
-	ROX-Filer/Help/README-es ROX-Filer/Help/TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ROX-Filer/Help/*.html ROX-Filer/Help/*.gz
+%doc ROX-Filer/Help/{*.html,README*,TODO,Changes}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_datadir}/ROX-Filer/Linux-ix86/*
 %attr(755,root,root) %{_datadir}/ROX-Filer/AppRun
