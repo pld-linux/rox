@@ -1,14 +1,13 @@
 Summary:	File-manager
 Summary(pl):	Menad¿er plików
 Name:		rox
-Version:	1.1.12
+Version:	1.2.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/rox/%{name}-%{version}.tgz
-Patch0:		%{name}-configfix.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	gtk+-devel
 BuildRequires:	gdk-pixbuf-devel
@@ -29,7 +28,6 @@ dla Linuksa i innych uniksów.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 ./ROX-Filer/AppRun --compile
