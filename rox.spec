@@ -4,7 +4,7 @@ Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
 Version:	2.1.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
@@ -50,7 +50,7 @@ cd ROX-Filer/src
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_appsdir}/%{_name},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir}/rox,%{_desktopdir}} \
-	$RPM_BUILD_ROOT%{_datadir}/{mime,Choices}
+	$RPM_BUILD_ROOT%{_datadir}/{mime/packages,Choices}
 
 ln -sf %{_appsdir}/%{_name}/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
 ln -s %{_appsdir}/%{_name}/ROX/MIME $RPM_BUILD_ROOT%{_pixmapsdir}/rox
@@ -59,7 +59,7 @@ cp -R ROX-Filer/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 cp -R Choices/* $RPM_BUILD_ROOT%{_datadir}/Choices
 
 install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_appsdir}/%{_name}
-install rox.xml $RPM_BUILD_ROOT%{_datadir}/mime
+install rox.xml $RPM_BUILD_ROOT%{_datadir}/mime/packages
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 # start-up script
@@ -78,6 +78,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %pre
 test -h %{_pixmapsdir}/rox/MIME-icons || rm -rf %{_pixmapsdir}/rox/MIME-icons
+
+%post
+%{_bindir}/update-mime-database %{_datadir}/mime
+
+%postun
+%{_bindir}/update-mime-database %{_datadir}/mime
 
 %files
 %defattr(644,root,root,755)
