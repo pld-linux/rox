@@ -1,13 +1,12 @@
-
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.1.0
-Release:	4
+Version:	2.1.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	b48089ea846036a1fc6107e0da876f62
+# Source0-md5:	b0c134a57e63b9bacae3967b0564218c
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
