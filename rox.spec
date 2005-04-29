@@ -2,7 +2,7 @@ Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
 Version:	2.2.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
@@ -22,6 +22,7 @@ Conflicts:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
+%define		_appsdir %{_libdir}/ROX-apps
 
 %description
 ROX-Filer is a small, fast and powerful file manager for Linux and
@@ -55,7 +56,8 @@ install -d \
 	$RPM_BUILD_ROOT%{_mandir}/man1 \
 	$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_iconsdir} \
-	$RPM_BUILD_ROOT%{_pixmapsdir}
+	$RPM_BUILD_ROOT%{_pixmapsdir} \
+	$RPM_BUILD_ROOT%{_appsdir}
 
 install ROX-Filer/%{_platform}/ROX-Filer $RPM_BUILD_ROOT%{_bindir}
 
@@ -144,3 +146,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/ROX
 %{_pixmapsdir}/rox.png
 %{_mandir}/man1/*
+%dir %{_appsdir}
