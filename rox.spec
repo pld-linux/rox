@@ -100,10 +100,10 @@ EOF
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{_bindir}/update-mime-database %{_datadir}/mime
+/usr/bin/update-mime-database %{_datadir}/mime ||:
 
 %postun
-%{_bindir}/update-mime-database %{_datadir}/mime
+/usr/bin/update-mime-database %{_datadir}/mime
 
 %files
 %defattr(644,root,root,755)
