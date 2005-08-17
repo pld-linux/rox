@@ -117,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(da) %{_roxdir}/ROX-Filer/Messages/da.gmo
 %lang(de) %{_roxdir}/ROX-Filer/Messages/de.gmo
 %lang(es) %{_roxdir}/ROX-Filer/Messages/es.gmo
-%lang(et_EE) %{_roxdir}/ROX-Filer/Messages/et_EE.gmo
+%lang(et) %{_roxdir}/ROX-Filer/Messages/et_EE.gmo
 %lang(eu) %{_roxdir}/ROX-Filer/Messages/eu.gmo
 %lang(fi) %{_roxdir}/ROX-Filer/Messages/fi.gmo
 %lang(fr) %{_roxdir}/ROX-Filer/Messages/fr.gmo
