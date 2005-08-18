@@ -1,0 +1,4 @@
+- updated to 1.3.0 (it uses gtk+2, so i did it in DEVEL branch)
+- added BR: gtk+2-devel, libxml2-devel, pkgconfig
+- added R: gtk+2, libxml2
+- some changes in %files
