@@ -62,9 +62,9 @@ install -d \
 	$RPM_BUILD_ROOT%{_roxdir}/ROX-Filer/{Help,Messages} \
 	$RPM_BUILD_ROOT/etc/xdg/rox.sourceforge.net
 
-cat >> $RPM_BUILD_ROOT%{_bindir}/rox << EOF
+cat >> $RPM_BUILD_ROOT%{_bindir}/rox << 'EOF'
 #!/bin/sh
-exec %{_roxdir}/ROX-Filer/AppRun "\$@"
+exec %{_roxdir}/ROX-Filer/AppRun "$@"
 EOF
 
 install rox.xml $RPM_BUILD_ROOT%{_datadir}/mime/packages
