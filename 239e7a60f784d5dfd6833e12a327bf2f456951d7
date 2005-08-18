@@ -1,0 +1,3 @@
+- moved ROX-apps to %{_libdir}
+- rel.4
+STBR
