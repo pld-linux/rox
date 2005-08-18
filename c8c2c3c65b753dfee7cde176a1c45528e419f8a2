@@ -1,0 +1,5 @@
+- Removed fix-mime-info-path.patch (switched to %{_datadir}/mime)
+- Removed useless %post/%postun - it has no sense at all - with the same
+  effects You may call here `df -h` or `echo "I love Pamela Anderson"`
+- Not sure about placing rox.xml in sharwed-mime-info cache dir
+- Release 2
