@@ -1,0 +1,3 @@
+- added libxml-includes patch (add libxml prefix before header files)
+- rel. 2
+  STBR
