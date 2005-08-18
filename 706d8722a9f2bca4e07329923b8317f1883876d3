@@ -1,0 +1,3 @@
+- Ok - it works now (moved rox.xml to %(_datadir}/mime/packages)
+- Restored %post/%postun
+- Release 3
