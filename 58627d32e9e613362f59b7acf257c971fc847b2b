@@ -1,0 +1,8 @@
+- Arch independent files moved to %{_datadir}/%{name}
+- Choises scripts moved to %{_datadir}/%{name}
+- Removed AppRun script
+- %{_platform}/ROX-Filer binary moved to %{_bindir}
+- Icon theme moved to %{_iconsdir} - it works now without fallback
+  to ~/.icons/ROX
+- All user config files are now stored in .rox dir with HOME_ETC support
+- Release 4
