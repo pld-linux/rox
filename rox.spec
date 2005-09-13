@@ -14,6 +14,7 @@ BuildRequires:	autoconf
 BuildRequires:	gtk+2-devel >= 1:2.0.1
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
+BuildRequires:	shared-mime-info >= 0.16
 Requires:	glib2 >= 2.0.3
 Requires:	gtk+2 >= 2.0.1
 Requires:	libxml2 >= 2.0.0
