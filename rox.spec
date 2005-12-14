@@ -1,24 +1,24 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.3
+Version:	2.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	5cca7bc58af875b88dd9956fda4249f3
+# Source0-md5:	3d001019a92b5cc781713b83327b1abb
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
-BuildRequires:	gtk+2-devel >= 1:2.0.1
+BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
-BuildRequires:	shared-mime-info >= 0.16
+BuildRequires:	shared-mime-info >= 0.14
 Requires:	glib2 >= 2.0.3
-Requires:	gtk+2 >= 2.0.1
+Requires:	gtk+2 >= 2:2.4.0
 Requires:	libxml2 >= 2.0.0
-Requires:	shared-mime-info >= 0.16
+Requires:	shared-mime-info >= 0.14
 Conflicts:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -128,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(nl) %{_roxdir}/ROX-Filer/Messages/nl.gmo
 %lang(no) %{_roxdir}/ROX-Filer/Messages/no.gmo
 %lang(pl) %{_roxdir}/ROX-Filer/Messages/pl.gmo
+%lang(pt) %{_roxdir}/ROX-Filer/Messages/pt_PT.gmo
 %lang(pt_BR) %{_roxdir}/ROX-Filer/Messages/pt_BR.gmo
 %lang(ro) %{_roxdir}/ROX-Filer/Messages/ro.gmo
 %lang(ru) %{_roxdir}/ROX-Filer/Messages/ru.gmo
