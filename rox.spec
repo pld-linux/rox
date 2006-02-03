@@ -97,9 +97,11 @@ cp -r Choices/* $RPM_BUILD_ROOT/etc/xdg/rox.sourceforge.net
 rm -rf $RPM_BUILD_ROOT
 
 %post
+umask 022
 /usr/bin/update-mime-database %{_datadir}/mime ||:
 
 %postun
+umask 022
 /usr/bin/update-mime-database %{_datadir}/mime
 
 %files
