@@ -15,6 +15,7 @@ BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	shared-mime-info >= 0.14
+BuildRequires:	xorg-lib-libSM-devel
 Requires:	glib2 >= 2.0.3
 Requires:	gtk+2 >= 2:2.4.0
 Requires:	libxml2 >= 2.0.0
