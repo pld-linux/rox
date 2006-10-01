@@ -1,12 +1,12 @@
 Summary:	File manager
 Summary(pl):	Zarz±dca plików
 Name:		rox
-Version:	2.4.1
+Version:	2.5
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/rox/%{name}-%{version}.tgz
-# Source0-md5:	0d43b7fcd0325936fdf036230837f21b
+Source0:	http://dl.sourceforge.net/rox/rox-filer-%{version}.tar.bz2
+# Source0-md5:	56e6a29f2dbdf11d6f4b74a3f03ff959
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
 URL:		http://rox.sourceforge.net/
@@ -14,11 +14,12 @@ BuildRequires:	autoconf
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	shared-mime-info >= 0.14
 Requires:	glib2 >= 2.0.3
 Requires:	gtk+2 >= 2:2.4.0
 Requires:	libxml2 >= 2.0.0
-Requires:	shared-mime-info >= 0.14
+Requires(post,postun):	shared-mime-info >= 0.14
 Conflicts:	rox-base
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,7 +36,7 @@ du¿ych mo¿liwo¶ciach przeznaczonym dla Linuksa i innych systemów
 uniksowych.
 
 %prep
-%setup -q
+%setup -q -n rox-filer-%{version}
 %patch0 -p1
 
 %build
@@ -97,12 +98,10 @@ cp -r Choices/* $RPM_BUILD_ROOT/etc/xdg/rox.sourceforge.net
 rm -rf $RPM_BUILD_ROOT
 
 %post
-umask 022
-/usr/bin/update-mime-database %{_datadir}/mime ||:
+%update_mime_database
 
 %postun
-umask 022
-/usr/bin/update-mime-database %{_datadir}/mime
+%update_mime_database
 
 %files
 %defattr(644,root,root,755)
@@ -135,6 +134,8 @@ umask 022
 %lang(ro) %{_roxdir}/ROX-Filer/Messages/ro.gmo
 %lang(ru) %{_roxdir}/ROX-Filer/Messages/ru.gmo
 %lang(sv) %{_roxdir}/ROX-Filer/Messages/sv.gmo
+%lang(uk) %{_roxdir}/ROX-Filer/Messages/uk.gmo
+%lang(vi) %{_roxdir}/ROX-Filer/Messages/vi_VN.gmo
 %lang(zh_CN) %{_roxdir}/ROX-Filer/Messages/zh_CN.gmo
 %lang(zh_TW) %{_roxdir}/ROX-Filer/Messages/zh_TW.gmo
 %{_roxdir}/ROX-Filer/images
