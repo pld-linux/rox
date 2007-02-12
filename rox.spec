@@ -2,7 +2,7 @@
 %define _name ROX-Filer
 %define _platform %(echo `uname -s`-`uname -m|sed 's/i.86/ix86/'`)
 Summary:	File-manager
-Summary(pl):	Menadøer plikÛw
+Summary(pl.UTF-8):   Menad≈ºer plik√≥w
 Name:		rox
 Version:	1.3.2
 Release:	1
@@ -29,9 +29,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ROX-Filer is a small, fast and powerful filer for Linux and Unix
 systems.
 
-%description -l pl
-ROX-Filer jest ma≥ym, szybkim menadøerem plikÛw o duøych moøliwo∂ciach
-dla Linuksa i innych uniksÛw.
+%description -l pl.UTF-8
+ROX-Filer jest ma≈Çym, szybkim menad≈ºerem plik√≥w o du≈ºych mo≈ºliwo≈õciach
+dla Linuksa i innych uniks√≥w.
 
 %prep
 %setup -q
