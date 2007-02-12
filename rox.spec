@@ -1,5 +1,5 @@
 Summary:	File manager
-Summary(pl.UTF-8):   Zarządca plików
+Summary(pl.UTF-8):	Zarządca plików
 Name:		rox
 Version:	2.5
 Release:	1
