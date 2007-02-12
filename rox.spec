@@ -1,5 +1,5 @@
 Summary:	File manager
-Summary(pl):	Zarz±dca plikÛw
+Summary(pl.UTF-8):   ZarzƒÖdca plik√≥w
 Name:		rox
 Version:	2.5
 Release:	1
@@ -31,9 +31,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ROX-Filer is a small, fast and powerful file manager for Linux and
 Unix systems.
 
-%description -l pl
-ROX-Filer jest ma≥ym, szybkim programem do zarz±dzania plikami o
-duøych moøliwo∂ciach przeznaczonym dla Linuksa i innych systemÛw
+%description -l pl.UTF-8
+ROX-Filer jest ma≈Çym, szybkim programem do zarzƒÖdzania plikami o
+du≈ºych mo≈ºliwo≈õciach przeznaczonym dla Linuksa i innych system√≥w
 uniksowych.
 
 %prep
