@@ -1,14 +1,15 @@
 Summary:	File manager
 Summary(pl.UTF-8):	Zarządca plików
 Name:		rox
-Version:	2.5
-Release:	2
+Version:	2.10
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/rox-filer-%{version}.tar.bz2
-# Source0-md5:	56e6a29f2dbdf11d6f4b74a3f03ff959
+# Source0-md5:	28e8494c9af783258ff86c830f8f0062
 Source1:	%{name}.desktop
 Patch0:		%{name}-help.patch
+Patch1:		%{name}-linking.patch
 URL:		http://rox.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	gtk+2-devel >= 2:2.4.0
@@ -39,6 +40,7 @@ uniksowych.
 %prep
 %setup -q -n rox-filer-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 cd ROX-Filer/src
@@ -57,12 +59,13 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d \
 	$RPM_BUILD_ROOT%{_bindir} \
+	$RPM_BUILD_ROOT%{_localedir} \
 	$RPM_BUILD_ROOT%{_datadir}/mime/packages \
 	$RPM_BUILD_ROOT%{_mandir}/man1 \
 	$RPM_BUILD_ROOT%{_desktopdir} \
 	$RPM_BUILD_ROOT%{_iconsdir} \
 	$RPM_BUILD_ROOT%{_pixmapsdir} \
-	$RPM_BUILD_ROOT%{_roxdir}/ROX-Filer/{Help,Messages} \
+	$RPM_BUILD_ROOT%{_roxdir}/ROX-Filer/Help \
 	$RPM_BUILD_ROOT/etc/xdg/rox.sourceforge.net
 
 cat >> $RPM_BUILD_ROOT%{_bindir}/rox << 'EOF'
@@ -80,8 +83,6 @@ install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/rox.png
 
 install ROX-Filer/Help/Manual*.html $RPM_BUILD_ROOT%{_roxdir}/ROX-Filer/Help
 
-install ROX-Filer/Messages/*.gmo $RPM_BUILD_ROOT%{_roxdir}/ROX-Filer/Messages
-
 cp -r ROX-Filer/ROX $RPM_BUILD_ROOT%{_iconsdir}
 
 cp -r ROX-Filer/images $RPM_BUILD_ROOT%{_roxdir}/ROX-Filer
@@ -92,6 +93,13 @@ install ROX-Filer/ROX-Filer $RPM_BUILD_ROOT%{_roxdir}/ROX-Filer
 install ROX-Filer/*.{css,xml} $RPM_BUILD_ROOT%{_roxdir}/ROX-Filer
 
 install ROX-Filer/.DirIcon $RPM_BUILD_ROOT%{_roxdir}/ROX-Filer
+cp -r ROX-Filer/Messages/* $RPM_BUILD_ROOT%{_localedir}
+
+%{__rm} $RPM_BUILD_ROOT%{_localedir}/README
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{et_EE,no,pt_PT}
+
+
+%find_lang ROX-Filer
 
 cp -r Choices/* $RPM_BUILD_ROOT/etc/xdg/rox.sourceforge.net
 
@@ -104,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %update_mime_database
 
-%files
+%files -f ROX-Filer.lang
 %defattr(644,root,root,755)
 %doc ROX-Filer/Help/{Changes,README,TODO}
 %lang(es) %doc ROX-Filer/Help/README-es
@@ -115,30 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_roxdir}/ROX-Filer/Help/Manual.html
 %lang(fr) %{_roxdir}/ROX-Filer/Help/Manual-fr.html
 %lang(it) %{_roxdir}/ROX-Filer/Help/Manual-it.html
-%dir %{_roxdir}/ROX-Filer/Messages
-%lang(cs) %{_roxdir}/ROX-Filer/Messages/cs.gmo
-%lang(da) %{_roxdir}/ROX-Filer/Messages/da.gmo
-%lang(de) %{_roxdir}/ROX-Filer/Messages/de.gmo
-%lang(es) %{_roxdir}/ROX-Filer/Messages/es.gmo
-%lang(et) %{_roxdir}/ROX-Filer/Messages/et_EE.gmo
-%lang(eu) %{_roxdir}/ROX-Filer/Messages/eu.gmo
-%lang(fi) %{_roxdir}/ROX-Filer/Messages/fi.gmo
-%lang(fr) %{_roxdir}/ROX-Filer/Messages/fr.gmo
-%lang(hu) %{_roxdir}/ROX-Filer/Messages/hu.gmo
-%lang(it) %{_roxdir}/ROX-Filer/Messages/it.gmo
-%lang(ja) %{_roxdir}/ROX-Filer/Messages/ja.gmo
-%lang(nl) %{_roxdir}/ROX-Filer/Messages/nl.gmo
-%lang(no) %{_roxdir}/ROX-Filer/Messages/no.gmo
-%lang(pl) %{_roxdir}/ROX-Filer/Messages/pl.gmo
-%lang(pt) %{_roxdir}/ROX-Filer/Messages/pt_PT.gmo
-%lang(pt_BR) %{_roxdir}/ROX-Filer/Messages/pt_BR.gmo
-%lang(ro) %{_roxdir}/ROX-Filer/Messages/ro.gmo
-%lang(ru) %{_roxdir}/ROX-Filer/Messages/ru.gmo
-%lang(sv) %{_roxdir}/ROX-Filer/Messages/sv.gmo
-%lang(uk) %{_roxdir}/ROX-Filer/Messages/uk.gmo
-%lang(vi) %{_roxdir}/ROX-Filer/Messages/vi_VN.gmo
-%lang(zh_CN) %{_roxdir}/ROX-Filer/Messages/zh_CN.gmo
-%lang(zh_TW) %{_roxdir}/ROX-Filer/Messages/zh_TW.gmo
 %{_roxdir}/ROX-Filer/images
 %attr(755,root,root) %{_roxdir}/ROX-Filer/AppRun
 %attr(755,root,root) %{_roxdir}/ROX-Filer/ROX-Filer

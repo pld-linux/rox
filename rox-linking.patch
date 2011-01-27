@@ -1,0 +1,11 @@
+--- rox-filer-2.10/ROX-Filer/src/configure.in.orig	2011-01-27 12:11:11.619814512 +0100
++++ rox-filer-2.10/ROX-Filer/src/configure.in	2011-01-27 12:11:54.849814514 +0100
+@@ -114,7 +114,7 @@
+ if test x$no_x = xyes ; then
+   AC_MSG_ERROR([X development libraries not found])
+ fi
+-LIBS="$LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
++LIBS="$LIBS $X_LIBS -lX11 $X_EXTRA_LIBS -ldl"
+ CFLAGS="$CFLAGS $X_CFLAGS"
+ 
+ dnl Does file(1) support '-b' ?
